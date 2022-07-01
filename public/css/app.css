@@ -10252,3 +10252,17 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+header nav {
+  min-height: 80px;
+}
+
+@media screen and (min-width: 768px) {
+  aside #dashboard {
+    margin-top: 80px;
+    width: 300px;
+  }
+  #board {
+    margin-left: 300px;
+    overflow: auto;
+  }
+}
