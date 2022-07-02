@@ -31,6 +31,8 @@ header nav {
     aside #dashboard{
         margin-top: $header-nav-height;
         width: $aside-width;
+        visibility: visible!important;
+        transform: none!important;
     }
 
     #board{

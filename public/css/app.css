@@ -10272,6 +10272,8 @@ header nav {
   aside #dashboard {
     margin-top: 80px;
     width: 300px;
+    visibility: visible !important;
+    transform: none !important;
   }
   #board {
     margin-left: 300px;
