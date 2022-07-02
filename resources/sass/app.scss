@@ -10,6 +10,18 @@
 $header-nav-height: 80px;
 $aside-width: 300px;
 
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+}
+
+main{
+    margin-top: $header-nav-height;
+}
+
 header nav {
     min-height: $header-nav-height;
 }
@@ -23,6 +35,5 @@ header nav {
 
     #board{
         margin-left: $aside-width;
-        overflow: auto;
     }
 }

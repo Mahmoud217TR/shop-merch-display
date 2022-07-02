@@ -10252,6 +10252,18 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+}
+
+main {
+  margin-top: 80px;
+}
+
 header nav {
   min-height: 80px;
 }
@@ -10263,6 +10275,5 @@ header nav {
   }
   #board {
     margin-left: 300px;
-    overflow: auto;
   }
 }
