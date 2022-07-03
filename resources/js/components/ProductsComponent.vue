@@ -4,26 +4,29 @@
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="productModalLabel">{{modalTitle}}</h5>
+                <h5 class="modal-title" id="productModalLabel">{{modal.title}}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form ref="modal-form" class="container" @submit.prevent="submitForm()">
                 <div class="modal-body">
-                <p v-if="!modalDisplayform">{{ modalBodyText }}</p>
-                    <input type="text" hidden name="id" id="id" ref="id">
+                <p v-if="!modal.displayform">{{ modal.bodyText }}</p>
+                    <input type="text" hidden name="id" :value="input.id" ref="id">
 
-                    <div v-if="modalDisplayform" class="container">
+                    <div v-if="modal.displayform" class="container">
                         <div class="row">
                             <div class="col">
-                                <label for="category">Category:</label>
+                                <label for="category_id">Category:</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                <select id="category" class="form-select" required ref="category">
+                                <select id="category_id" class="form-select" required ref="category_id" >
                                     <option>Category</option>
-                                    <option v-for="category in categories" :value="category.id ">{{ category.name }}</option>
+                                    <option v-for="category in categories" :value="category.id" :selected="category.id==input.category_id">{{ category.name }}</option>
                                 </select>
+                                <span v-if="errors.category_id" class="text-danger fw-bold" role="alert">
+                                        {{errors.category_id}}
+                                </span>
                             </div>
                         </div>
 
@@ -34,7 +37,10 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <input id='name' type="text" class="form-control" required ref="name">
+                                <input id='name' type="text" class="form-control" required :value="input.name" ref="name">
+                                <span v-if="errors.name" class="text-danger fw-bold" role="alert">
+                                        {{errors.name}}
+                                </span>
                             </div>
                         </div>
 
@@ -45,7 +51,10 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <input id='price' type="number" min="0" class="form-control" required ref="price">
+                                <input id='price' type="number" min="0" class="form-control" required :value="input.price" ref="price">
+                                <span v-if="errors.price" class="text-danger fw-bold" role="alert">
+                                        {{errors.price}}
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -53,7 +62,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" ref='modal-close-button'>Close</button>
-                    <button type="submit" class="btn btn-primary">{{ modalButtonText }}</button>
+                    <button type="submit" class="btn btn-primary">{{ modal.buttonText }}</button>
                 </div>
             </form>
             </div>
@@ -94,12 +103,16 @@
                         </tr>
                         <tr v-for="product in products">
                             <td>{{ product.id }}</td>
-                            <td>{{ product.category }}</td>
+                            <td>{{ product.category_name }}</td>
                             <td>{{ product.name }}</td>
                             <td>{{ product.price }}</td>
                             <td>
-                                <button class="btn btn-sm btn-success me-2 my-1"><i class="bi bi-pencil-fill"></i></button>
-                                <button class="btn btn-sm btn-danger my-1"><i class="bi bi-trash3-fill"></i></button>
+                                <button class="btn btn-sm btn-success me-2 my-1" data-bs-toggle="modal" data-bs-target="#productModal" @click="editForm(product.id)">
+                                    <i class="bi bi-pencil-fill"></i>
+                                </button>
+                                <button class="btn btn-sm btn-danger my-1">
+                                    <i class="bi bi-trash3-fill"></i>
+                                </button>
                             </td>
                         </tr>
                     </tbody>
@@ -116,11 +129,24 @@
             return {
                 products: [],
                 categories: [],
-                modalState: null,
-                modalTitle: null,
-                modalButtonText: null,
-                modalDisplayform: null,
-                modalBodyText: null,
+                modal: {
+                    state: null,
+                    title: null,
+                    buttonText: null,
+                    displayform: null,
+                    bodyText: null,
+                },
+                input: {
+                    id: 0,
+                    name: null,
+                    price: null,
+                    category_id: 0,
+                },
+                errors: {
+                    name: null,
+                    price: null,
+                    category_id: null,
+                }
             }
         },
         methods: {
@@ -132,15 +158,29 @@
             },
             createForm(){
                 this.initModal("Add a new Product", "Add", true, 'create');
+                this.initForm();
+            },
+            editForm(productId){
+                let product =  this.products.find(product => product.id === productId);
+                this.initModal("Edit Product "+product.name, "Update", true, 'update');
+                this.initForm(product.id, product.name, product.price, product.category_id);
+                this.clearErrors();
             },
             initModal(title, buttonText, displayForm, state){
-                this.modalTitle = title;
-                this.modalButtonText = buttonText;
-                this.modalDisplayform = displayForm;
-                this.modalState = state;
+                this.modal.title = title;
+                this.modal.buttonText = buttonText;
+                this.modal.displayform = displayForm;
+                this.modal.state = state;
+            },
+            initForm(id = "", name = "", price = "", category_id = 0){
+                this.input.id = id
+                this.input.name = name
+                this.input.price = price
+                this.input.category_id = category_id
             },
             submitForm(){
-                switch(this.modalState){
+                this.clearErrors();
+                switch(this.modal.state){
                     case 'create':{
                         this.createNewProduct();
                         break;
@@ -160,18 +200,30 @@
                 axios.post(this.storeUri,{
                     name: this.$refs.name.value,
                     price: this.$refs.price.value,
-                    category_id: this.$refs.category.value,
+                    category_id: this.$refs.category_id.value,
                 }).then(response => {
                     if(response.data.code == 200){
                         this.getProducts();
                         this.discardForm();
+                    }else{
+                        this.displayErrors(response.data.errors)
                     }
                 });
             },
             discardForm(){
                 this.$refs['modal-form'].reset();
                 this.$refs['modal-close-button'].click();
-            }
+            },
+            displayErrors(errors){
+                for(var [key, value] of Object.entries(errors)){
+                    this.errors[key] = value[0]
+                }
+            },
+            clearErrors(){
+                this.errors.category_id = "";
+                this.errors.name = "";
+                this.errors.price = "";
+            },
         },
         mounted() {
             this.getProducts()

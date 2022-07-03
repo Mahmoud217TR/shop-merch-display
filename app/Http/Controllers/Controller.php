@@ -17,7 +17,8 @@ class Controller extends BaseController
                 'id' => $product->id,
                 'name' => $product->name,
                 'price' => $product->price,
-                'category' => $product->category->name,
+                'category_id' => $product->category->id,
+                'category_name' => $product->category->name,
             ];
         });
     }
