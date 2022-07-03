@@ -40,7 +40,25 @@
         <!-- Display -->
         <div class="row">
             <div class="col">
-                
+                <table class="table table-dark table-striped-columns">
+                    <tbody>
+                        <tr>
+                            <th class="col-1" scope="col">ID</th>
+                            <th class="col-4" scope="col-md-6">Name</th>
+                            <th class="col-4" scope="col">Price</th>
+                            <th class="col-1" scope="col">Options</th>
+                        </tr>
+                        <tr v-for="product in products">
+                            <td>{{ product.id }}</td>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.price }}</td>
+                            <td>
+                                <button class="btn btn-sm btn-success me-2 my-1"><i class="bi bi-pencil-fill"></i></button>
+                                <button class="btn btn-sm btn-danger my-1"><i class="bi bi-trash3-fill"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -48,8 +66,21 @@
 
 <script>
     export default {
+        props:['productsUri'],
+        data() {
+            return {
+                products: [],
+            }
+        },
+        methods: {
+            getProducts(){
+                axios.get(this.productsUri).then(response => {
+                    this.products = response.data.products;
+                });
+            }
+        },
         mounted() {
-            console.log('Component mounted.')
-        }
+            this.getProducts()
+        },
     }
 </script>
