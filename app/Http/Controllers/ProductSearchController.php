@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class ProductSearchController extends Controller
 {
-    public function index(){
+    public function search(){
         $keyword = request()->keyword;
         $order = request()->order;
         $type = request()->type;

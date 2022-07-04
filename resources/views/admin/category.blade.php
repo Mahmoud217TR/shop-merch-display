@@ -6,9 +6,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col">
-            <products-component index-uri="{{ route('product.index') }}" store-uri="{{ route('product.store') }}"
-            update-uri="{{ route('product.update') }}" destroy-uri="{{ route('product.destroy') }}"
-            search-uri="{{ route('product.search') }}" excel-uri="{{ route('product.export') }}"></products-component>
+            <categories-component index-uri="{{ route('category.index') }}" store-uri="{{ route('category.store') }}"
+            update-uri="{{ route('category.update') }}" destroy-uri="{{ route('category.destroy') }}"
+            search-uri="{{ route('category.search') }}"></categories-component>
         </div>
     </div>
 </div>

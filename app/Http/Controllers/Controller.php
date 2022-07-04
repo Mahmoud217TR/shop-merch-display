@@ -22,4 +22,14 @@ class Controller extends BaseController
             ];
         });
     }
+
+    protected function formatCategories($categoriesCollection){
+        return $categoriesCollection->map(function($category){
+            return [
+                'id' => $category->id,
+                'name' => $category->name,
+                'count' => $category->products->count(),
+            ];
+        });
+    }
 }
