@@ -76,11 +76,15 @@
                 <div class="input-group mb-3">
                     <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Sort By</button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Category</a></li>
-                        <li><a class="dropdown-item" href="#">Name</a></li>
-                        <li><a class="dropdown-item" href="#">Price</a></li>
+                        <li><a class="dropdown-item" href="#" @click="searchProducts('id','ASC')">ID ASC</a></li>
+                        <li><a class="dropdown-item" href="#" @click="searchProducts('id','DESC')">ID DESC</a></li>
+                        <li><a class="dropdown-item" href="#" @click="searchProducts('name','ASC')">Name ASC</a></li>
+                        <li><a class="dropdown-item" href="#" @click="searchProducts('name','DESC')">Name DESC</a></li>
+                        <li><a class="dropdown-item" href="#" @click="searchProducts('price','ASC')">Price ASC</a></li>
+                        <li><a class="dropdown-item" href="#" @click="searchProducts('price','DESC')">Price DESC</a></li>
                     </ul>
-                    <input type="text" class="form-control bg-white" aria-label="Text input with dropdown button" placeholder="Search...">
+                    <input type="text" class="form-control bg-white" aria-label="Text input with dropdown button"
+                    placeholder="Search..." @keyup="searchProducts()" ref="keyword">
                 </div>
             </div>
             <div class="col">
@@ -124,7 +128,7 @@
 
 <script>
     export default {
-        props:['indexUri','storeUri','updateUri','destroyUri'],
+        props:['indexUri','storeUri','updateUri','destroyUri','searchUri'],
         data() {
             return {
                 products: [],
@@ -147,6 +151,9 @@
                     name: null,
                     price: null,
                     category_id: null,
+                },
+                search: {
+                    keyword: null,
                 }
             }
         },
@@ -259,6 +266,17 @@
                 this.errors.name = "";
                 this.errors.price = "";
             },
+            searchProducts(order='', orderType='ASC'){
+                axios.get(this.searchUri,{
+                    params:{
+                        keyword: this.$refs.keyword.value,
+                        order: order,
+                        type: orderType,
+                    }
+                }).then(response => {
+                    this.products = response.data.products;
+                });
+            }
         },
         mounted() {
             this.getProducts()

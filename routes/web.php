@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductSearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,4 +33,8 @@ Route::controller(ProductController::class)->prefix('product')->middleware('auth
     Route::post('/','store')->name('product.store');
     Route::patch('/','update')->name('product.update');
     Route::delete('/','destroy')->name('product.destroy');
+});
+
+Route::controller(ProductSearchController::class)->prefix('search/product')->middleware('auth')->group(function(){
+    Route::get('/','index')->name('product.search');
 });
