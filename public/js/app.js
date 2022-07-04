@@ -22836,15 +22836,24 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       var product = this.products.find(function (product) {
         return product.id === productId;
       });
-      this.initModal("Edit Product " + product.name, "Update", true, 'update');
+      this.initModal("Editing Product " + product.name, "Update", true, 'update');
       this.initForm(product.id, product.name, product.price, product.category_id);
       this.clearErrors();
     },
-    initModal: function initModal(title, buttonText, displayForm, state) {
+    deleteForm: function deleteForm(productId) {
+      var product = this.products.find(function (product) {
+        return product.id === productId;
+      });
+      this.initModal("Deleting Product " + product.name, "Delete", false, 'delete', "Are you sure you want to delete this product?");
+      this.initForm(product.id);
+      this.clearErrors();
+    },
+    initModal: function initModal(title, buttonText, displayForm, state, bodyText) {
       this.modal.title = title;
       this.modal.buttonText = buttonText;
       this.modal.displayform = displayForm;
       this.modal.state = state;
+      this.modal.bodyText = bodyText;
     },
     initForm: function initForm() {
       var id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
@@ -22868,11 +22877,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
         case 'update':
           {
+            this.updateProduct();
             break;
           }
 
         case 'delete':
           {
+            this.removeProduct();
             break;
           }
 
@@ -22896,6 +22907,39 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         } else {
           _this2.displayErrors(response.data.errors);
         }
+      });
+    },
+    updateProduct: function updateProduct() {
+      var _this3 = this;
+
+      axios.patch(this.updateUri, {
+        id: this.$refs.id.value,
+        name: this.$refs.name.value,
+        price: this.$refs.price.value,
+        category_id: this.$refs.category_id.value
+      }).then(function (response) {
+        if (response.data.code == 200) {
+          _this3.getProducts();
+
+          _this3.discardForm();
+        } else {
+          _this3.displayErrors(response.data.errors);
+        }
+      });
+    },
+    removeProduct: function removeProduct() {
+      var _this4 = this;
+
+      axios["delete"](this.updateUri, {
+        data: {
+          id: this.$refs.id.value
+        }
+      }).then(function (response) {
+        _this4.getProducts();
+
+        _this4.discardForm();
+
+        console.log(response.data);
       });
     },
     discardForm: function discardForm() {
@@ -23004,7 +23048,9 @@ var _hoisted_14 = {
   ref: "category_id"
 };
 
-var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", null, "Category", -1
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  value: "0"
+}, "Category", -1
 /* HOISTED */
 );
 
@@ -23123,15 +23169,15 @@ var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 var _hoisted_41 = [_hoisted_40];
+var _hoisted_42 = ["onClick"];
 
-var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "btn btn-sm btn-danger my-1"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_43 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bi bi-trash3-fill"
-})], -1
+}, null, -1
 /* HOISTED */
 );
 
+var _hoisted_44 = [_hoisted_43];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.modal.title), 1
   /* TEXT */
@@ -23179,6 +23225,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     id: "price",
     type: "number",
     min: "0",
+    step: "any",
     "class": "form-control",
     required: "",
     value: $data.input.price,
@@ -23219,7 +23266,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }
     }, _hoisted_41, 8
     /* PROPS */
-    , _hoisted_39), _hoisted_42])]);
+    , _hoisted_39), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+      "class": "btn btn-sm btn-danger my-1",
+      "data-bs-toggle": "modal",
+      "data-bs-target": "#productModal",
+      onClick: function onClick($event) {
+        return $options.deleteForm(product.id);
+      }
+    }, _hoisted_44, 8
+    /* PROPS */
+    , _hoisted_42)])]);
   }), 256
   /* UNKEYED_FRAGMENT */
   ))])])])])])], 64

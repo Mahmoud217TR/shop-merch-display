@@ -21,7 +21,7 @@
                         <div class="row">
                             <div class="col">
                                 <select id="category_id" class="form-select" required ref="category_id" >
-                                    <option>Category</option>
+                                    <option value="0">Category</option>
                                     <option v-for="category in categories" :value="category.id" :selected="category.id==input.category_id">{{ category.name }}</option>
                                 </select>
                                 <span v-if="errors.category_id" class="text-danger fw-bold" role="alert">
@@ -51,7 +51,7 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <input id='price' type="number" min="0" class="form-control" required :value="input.price" ref="price">
+                                <input id='price' type="number" min="0" step="any" class="form-control" required :value="input.price" ref="price">
                                 <span v-if="errors.price" class="text-danger fw-bold" role="alert">
                                         {{errors.price}}
                                 </span>
@@ -110,7 +110,7 @@
                                 <button class="btn btn-sm btn-success me-2 my-1" data-bs-toggle="modal" data-bs-target="#productModal" @click="editForm(product.id)">
                                     <i class="bi bi-pencil-fill"></i>
                                 </button>
-                                <button class="btn btn-sm btn-danger my-1">
+                                <button class="btn btn-sm btn-danger my-1" data-bs-toggle="modal" data-bs-target="#productModal" @click="deleteForm(product.id)">
                                     <i class="bi bi-trash3-fill"></i>
                                 </button>
                             </td>
@@ -162,15 +162,22 @@
             },
             editForm(productId){
                 let product =  this.products.find(product => product.id === productId);
-                this.initModal("Edit Product "+product.name, "Update", true, 'update');
+                this.initModal("Editing Product "+product.name, "Update", true, 'update');
                 this.initForm(product.id, product.name, product.price, product.category_id);
                 this.clearErrors();
             },
-            initModal(title, buttonText, displayForm, state){
+            deleteForm(productId){
+                let product =  this.products.find(product => product.id === productId);
+                this.initModal("Deleting Product "+product.name, "Delete", false, 'delete',"Are you sure you want to delete this product?");
+                this.initForm(product.id);
+                this.clearErrors();
+            },
+            initModal(title, buttonText, displayForm, state, bodyText){
                 this.modal.title = title;
                 this.modal.buttonText = buttonText;
                 this.modal.displayform = displayForm;
                 this.modal.state = state;
+                this.modal.bodyText = bodyText
             },
             initForm(id = "", name = "", price = "", category_id = 0){
                 this.input.id = id
@@ -186,9 +193,11 @@
                         break;
                     }
                     case 'update':{
+                        this.updateProduct();
                         break;
                     }
                     case 'delete':{
+                        this.removeProduct();
                         break;
                     }
                     default:{
@@ -208,6 +217,30 @@
                     }else{
                         this.displayErrors(response.data.errors)
                     }
+                });
+            },
+            updateProduct(){
+                axios.patch(this.updateUri,{
+                    id: this.$refs.id.value,
+                    name: this.$refs.name.value,
+                    price: this.$refs.price.value,
+                    category_id: this.$refs.category_id.value,
+                }).then(response => {
+                    if(response.data.code == 200){
+                        this.getProducts();
+                        this.discardForm();
+                    }else{
+                        this.displayErrors(response.data.errors)
+                    }
+                });
+            },
+            removeProduct(){
+                axios.delete(this.updateUri,{ data:{
+                    id: this.$refs.id.value,
+                }}).then(response => {
+                    this.getProducts();
+                    this.discardForm();
+                    console.log(response.data)
                 });
             },
             discardForm(){

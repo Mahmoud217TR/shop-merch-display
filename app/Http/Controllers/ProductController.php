@@ -21,7 +21,7 @@ class ProductController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store()
     {
         $validator = $this->getValidator();
 
@@ -38,14 +38,41 @@ class ProductController extends Controller
         ]);
     }
 
-    public function update(Request $request, Product $product)
+    public function update()
     {
-        //
+        $validator = $this->getValidator();
+        $idValidator = $this->getIdValidator();
+
+        if($idValidator->passes() && $validator->passes()){
+            Product::find($idValidator->validated()['id'])->update($validator->validated());
+            return response()->json([
+                'code' => 200,
+            ]);
+        }
+        
+        return response()->json([
+            'code' => 422,
+            'errors' => $validator->errors()->toArray(),
+        ]);
     }
 
-    public function destroy(Product $product)
+    public function destroy()
     {
-        //
+        $idValidator = $this->getIdValidator();
+
+        if($idValidator->passes()){
+            Product::find($idValidator->validated()['id'])->delete();
+            return response()->json([
+                'code' => 200,
+                'id' => $idValidator->validated()['id'],
+            ]);
+        }
+    }
+
+    private function getIdValidator(){
+        return Validator::make(request()->all(),[
+            'id' => 'required|numeric|exists:products,id',
+        ]);
     }
 
     private function getValidator(){
@@ -53,6 +80,8 @@ class ProductController extends Controller
             'name' => 'required|string|max:255',
             'price' => 'required|numeric|min:0',
             'category_id' => 'required|numeric|exists:categories,id',
+        ],[
+            'category_id.exists' => 'Please choose a valid Category'
         ]);
     }
 }
