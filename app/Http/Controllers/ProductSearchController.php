@@ -24,7 +24,6 @@ class ProductSearchController extends Controller
 
         return response()->json([
             'products' => $this->formatProducts($produts),
-            'categories' => $categories,
         ]);
     }
 }
