@@ -62,7 +62,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" ref='modal-close-button'>Close</button>
-                    <button type="submit" class="btn btn-primary">{{ modal.buttonText }}</button>
+                    <button type="submit" class="btn" :class="'btn-'+modal.btn_class">{{ modal.buttonText }}</button>
                 </div>
             </form>
             </div>
@@ -134,6 +134,7 @@
                     title: null,
                     buttonText: null,
                     displayform: null,
+                    btn_class: null,
                     bodyText: null,
                 },
                 input: {
@@ -157,29 +158,30 @@
                 });
             },
             createForm(){
-                this.initModal("Add a new Product", "Add", true, 'create');
+                this.initModal("Add a new Product", "Add", true, 'create', 'primary');
                 this.initForm();
             },
             editForm(productId){
                 let product =  this.products.find(product => product.id === productId);
-                this.initModal("Editing Product "+product.name, "Update", true, 'update');
+                this.initModal("Editing Product "+product.name, "Update", true, 'update', 'success');
                 this.initForm(product.id, product.name, product.price, product.category_id);
                 this.clearErrors();
             },
             deleteForm(productId){
                 let product =  this.products.find(product => product.id === productId);
-                this.initModal("Deleting Product "+product.name, "Delete", false, 'delete',"Are you sure you want to delete this product?");
+                this.initModal("Deleting Product "+product.name, "Delete", false, 'delete', 'danger',"Are you sure you want to delete this product?");
                 this.initForm(product.id);
                 this.clearErrors();
             },
-            initModal(title, buttonText, displayForm, state, bodyText){
+            initModal(title, buttonText, displayForm, state, btn_class, bodyText){
                 this.modal.title = title;
                 this.modal.buttonText = buttonText;
                 this.modal.displayform = displayForm;
                 this.modal.state = state;
+                this.modal.btn_class = btn_class;
                 this.modal.bodyText = bodyText
             },
-            initForm(id = "", name = "", price = "", category_id = 0){
+            initForm(id = "", name = "", price = "", category_id = 0,){
                 this.input.id = id
                 this.input.name = name
                 this.input.price = price
