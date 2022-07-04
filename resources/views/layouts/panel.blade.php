@@ -11,7 +11,7 @@
             </div>
           </div>
     </aside>
-    <div id="board">
+    <div id="board" class="pt-3">
         @yield('board')
     </div>
 @endsection

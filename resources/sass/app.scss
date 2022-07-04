@@ -27,6 +27,9 @@ header nav {
     min-height: $header-nav-height;
 }
 
+#board{
+    overflow: auto;
+}
 
 @media screen and (min-width: 768px) {
     aside #dashboard{

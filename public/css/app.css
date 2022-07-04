@@ -17635,6 +17635,10 @@ header nav {
   min-height: 80px;
 }
 
+#board {
+  overflow: auto;
+}
+
 @media screen and (min-width: 768px) {
   aside #dashboard {
     margin-top: 80px;

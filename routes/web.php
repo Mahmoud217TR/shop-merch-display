@@ -1,5 +1,8 @@
 <?php
 
+use App\Exports\ProductsExport;
+use App\Http\Controllers\ExportController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductSearchController;
 use Illuminate\Support\Facades\Route;
@@ -25,7 +28,7 @@ Auth::routes([
     'verify' => false,
 ]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 Route::controller(ProductController::class)->prefix('product')->middleware('auth')->group(function(){
@@ -38,3 +41,5 @@ Route::controller(ProductController::class)->prefix('product')->middleware('auth
 Route::controller(ProductSearchController::class)->prefix('search/product')->middleware('auth')->group(function(){
     Route::get('/','index')->name('product.search');
 });
+
+Route::get('/export', [ExportController::class, 'export'])->name('product.export');

@@ -71,7 +71,7 @@
     <!-- Controls & Display -->
     <div class="container-fluid">
         <!-- Controls -->
-        <div class="row">
+        <div class="row mb-3">
             <div class="col-md-6">
                 <div class="input-group mb-3">
                     <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Sort By</button>
@@ -88,9 +88,10 @@
                 </div>
             </div>
             <div class="col">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productModal" @click="createForm()">
+                <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#productModal" @click="createForm()">
                     Add new Product
                 </button>
+                <a :href="excelUri" class="btn btn-success me-2"><i class="bi bi-file-spreadsheet-fill"></i></a>
             </div>
         </div>
         <!-- Display -->
@@ -128,7 +129,7 @@
 
 <script>
     export default {
-        props:['indexUri','storeUri','updateUri','destroyUri','searchUri'],
+        props:['indexUri','storeUri','updateUri','destroyUri','searchUri','excelUri'],
         data() {
             return {
                 products: [],
