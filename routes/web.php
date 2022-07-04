@@ -1,6 +1,7 @@
 <?php
 
 use App\Exports\ProductsExport;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
@@ -30,6 +31,11 @@ Auth::routes([
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+
+Route::controller(AdminController::class)->prefix('admin')->middleware('auth')->group(function(){
+    Route::get('/category','category')->name('admin.category');
+    Route::get('/product','product')->name('admin.product');
+});
 
 Route::controller(ProductController::class)->prefix('product')->middleware('auth')->group(function(){
     Route::get('/','index')->name('product.index');
