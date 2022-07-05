@@ -49,8 +49,6 @@
                         <li><a class="dropdown-item" href="#" @click="searchProducts('id','DESC')">ID DESC</a></li>
                         <li><a class="dropdown-item" href="#" @click="searchProducts('name','ASC')">Name ASC</a></li>
                         <li><a class="dropdown-item" href="#" @click="searchProducts('name','DESC')">Name DESC</a></li>
-                        <li><a class="dropdown-item" href="#" @click="searchProducts('count','ASC')">Count ASC</a></li>
-                        <li><a class="dropdown-item" href="#" @click="searchProducts('count','DESC')">Count DESC</a></li>
                     </ul>
                     <input type="text" class="form-control bg-white" aria-label="Text input with dropdown button"
                     placeholder="Search..." @keyup="searchProducts()" ref="keyword">
@@ -137,7 +135,7 @@
             },
             deleteForm(categoryId){
                 let category =  this.categories.find(category => category.id === categoryId);
-                this.initModal("Deleting Category "+category.name, "Delete", false, 'delete', 'danger',"Are you sure you want to delete this product?");
+                this.initModal("Deleting Category "+category.name, "Delete", false, 'delete', 'danger',"Are you sure you want to delete this category with it's prouducts?");
                 this.initForm(category.id);
                 this.clearErrors();
             },

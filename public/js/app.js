@@ -22842,7 +22842,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       var category = this.categories.find(function (category) {
         return category.id === categoryId;
       });
-      this.initModal("Deleting Category " + category.name, "Delete", false, 'delete', 'danger', "Are you sure you want to delete this product?");
+      this.initModal("Deleting Category " + category.name, "Delete", false, 'delete', 'danger', "Are you sure you want to delete this category with it's prouducts?");
       this.initForm(category.id);
       this.clearErrors();
     },
@@ -23413,24 +23413,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[4] || (_cache[4] = function ($event) {
       return $options.searchProducts('name', 'DESC');
     })
-  }, "Name DESC")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-    "class": "dropdown-item",
-    href: "#",
-    onClick: _cache[5] || (_cache[5] = function ($event) {
-      return $options.searchProducts('count', 'ASC');
-    })
-  }, "Count ASC")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-    "class": "dropdown-item",
-    href: "#",
-    onClick: _cache[6] || (_cache[6] = function ($event) {
-      return $options.searchProducts('count', 'DESC');
-    })
-  }, "Count DESC")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, "Name DESC")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     "class": "form-control bg-white",
     "aria-label": "Text input with dropdown button",
     placeholder: "Search...",
-    onKeyup: _cache[7] || (_cache[7] = function ($event) {
+    onKeyup: _cache[5] || (_cache[5] = function ($event) {
       return $options.searchProducts();
     }),
     ref: "keyword"
@@ -23441,7 +23429,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "btn btn-primary me-2",
     "data-bs-toggle": "modal",
     "data-bs-target": "#categoryModal",
-    onClick: _cache[8] || (_cache[8] = function ($event) {
+    onClick: _cache[6] || (_cache[6] = function ($event) {
       return $options.createForm();
     })
   }, " Add new Category ")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Display "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [_hoisted_28, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.categories, function (category) {
