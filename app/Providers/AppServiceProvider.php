@@ -28,5 +28,9 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('activeroute', function ($expression) {
                 return '<?php if('.$expression.' == Route::currentRouteName()) echo "active"; else echo "text-white"?>';
         });
+
+        Blade::directive('json', function ($expression) {
+                return '<?php echo json_encode('.$expression.') ?>';
+        });
     }
 }

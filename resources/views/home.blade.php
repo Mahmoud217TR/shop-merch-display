@@ -13,7 +13,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                    <chart-component width='400' height='200' label='Test Chart' 
+                    v-bind:data='@json($categoryChart["data"])' v-bind:colors='@json($categoryChart["colors"])'
+                    v-bind:labels='@json($categoryChart["labels"])'></chart-component>
                     {{ __('You are logged in!') }}
                 </div>
             </div>

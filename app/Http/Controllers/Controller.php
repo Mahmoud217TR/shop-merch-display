@@ -32,4 +32,17 @@ class Controller extends BaseController
             ];
         });
     }
+
+    protected function generateRandomColor(){
+        return "#".substr(md5(rand()), 0, 6);
+    }
+
+    protected function generateRandomColors($numberOfColors){
+        $colors = [];
+        for($counter = 0; $counter < $numberOfColors ; $counter++){
+            array_push($colors, $this->generateRandomColor());
+        }
+
+        return $colors;
+    }
 }
