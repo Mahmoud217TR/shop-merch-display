@@ -1,7 +1,21 @@
 @extends('layouts.panel')
 
+@section('title','Home')
+
 @section('board')
 <div class="container">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1><i class="bi bi-house-fill me-2"></i><span>Home</span></h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <hr>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-6">
             <div class="card bg-dark text-white">

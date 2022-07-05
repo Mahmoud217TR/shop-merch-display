@@ -28,7 +28,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link @activeroute('admin.settings')">
+                    <a href="{{ route('settings') }}" class="nav-link @activeroute('admin.settings')">
                       <i class="bi bi-gear-fill me-2"></i><span>Settings</span>
                     </a>
                 </li>

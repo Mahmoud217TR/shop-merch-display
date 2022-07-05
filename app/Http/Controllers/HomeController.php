@@ -8,21 +8,6 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
         $limit = 10; // Changed from settings
@@ -41,6 +26,6 @@ class HomeController extends Controller
             'labels' => $this->trimStringsInCollection($products->pluck('name'), 15),
         ];
 
-        return view('home', compact('categoryChart', 'productChart'));
+        return view('admin.home', compact('categoryChart', 'productChart'));
     }
 }

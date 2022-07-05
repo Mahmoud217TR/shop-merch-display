@@ -8,6 +8,7 @@ use App\Http\Controllers\ExportController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductSearchController;
+use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,12 +32,15 @@ Auth::routes([
     'verify' => false,
 ]);
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-
+Route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');
 
 Route::controller(AdminController::class)->prefix('admin')->middleware('auth')->group(function(){
     Route::get('/category','category')->name('admin.category');
     Route::get('/product','product')->name('admin.product');
+});
+
+Route::controller(SettingsController::class)->prefix('settings')->middleware('auth')->group(function(){
+    Route::get('/', [SettingsController::class, 'index'])->name('settings');
 });
 
 Route::controller(CategoryController::class)->prefix('category')->middleware('auth')->group(function(){
