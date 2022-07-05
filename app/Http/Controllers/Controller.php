@@ -45,4 +45,13 @@ class Controller extends BaseController
 
         return $colors;
     }
+
+    protected function trimStringsInCollection($collection, $limit){
+        return $collection->map(function($item) use ($limit){
+            $len = strlen($item);
+            if($len > $limit){
+                return substr($item, 0, $limit)."...";
+            }
+        });
+    }
 }

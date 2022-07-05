@@ -8,5 +8,6 @@ Chart.register(...registerables);
 let app=createApp({})
 app.component('products-component', require('./components/ProductsComponent.vue').default);
 app.component('categories-component', require('./components/CategoriesComponent.vue').default);
-app.component('chart-component', require('./components/ChartComponent.vue').default);
+app.component('bar-chart-component', require('./components/BarChartComponent.vue').default);
+app.component('pie-chart-component', require('./components/PieChartComponent.vue').default);
 app.mount("#app");
