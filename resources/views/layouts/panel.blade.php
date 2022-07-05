@@ -5,7 +5,7 @@
         <div class="offcanvas offcanvas-start p-3 text-white bg-dark" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="dashboard">
             <div class="d-flex mb-3 mb-md-0 me-md-auto align-items-center justify-content-between">
               <a href="/" class="d-flex align-items-center text-white text-decoration-none">
-                <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+                <img src="{{ asset('images/logo.svg') }}" alt="logo" width="40" height="40" class="bg-light rounded-circle me-3">
                 <span class="fs-4">{{ config('app.name', 'Laravel') }}</span>
             </a>
             <button type="button" class="btn-close btn-close-white d-md-none " data-bs-dismiss="offcanvas" aria-label="Close"></button>  
@@ -15,12 +15,6 @@
                 <li class="nav-item">
                     <a href="{{ route('home') }}" class="nav-link @activeroute('home')">
                       <i class="bi bi-house-fill me-2"></i><span>Home</span>
-                      
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="nav-link @activeroute('dashboard')">
-                      <i class="bi bi-speedometer2 me-2"></i><span>Dashboard</span>
                     </a>
                 </li>
                 <li>
@@ -45,12 +39,11 @@
                     <i class="bi bi-person-circle fs-3 me-2"></i>
                     <strong>{{ auth()->user()->name }}</strong>
                 </a>
-              <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1" style="">
-                <li><a class="dropdown-item" href="#">New project...</a></li>
-                <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
+              <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                <form action="{{ route('logout') }}" method="post" id="logout-form">
+                  @csrf
+                </form>
+                <li><a class="dropdown-item" href="#" onclick="document.getElementById('logout-form').submit()">Sign out</a></li>
               </ul>
             </div>
         </div>
