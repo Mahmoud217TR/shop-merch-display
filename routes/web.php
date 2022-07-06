@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductSearchController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,8 +41,13 @@ Route::controller(AdminController::class)->prefix('admin')->middleware('auth')->
 });
 
 Route::controller(SettingsController::class)->prefix('settings')->middleware('auth')->group(function(){
-    Route::get('/', [SettingsController::class, 'index'])->name('settings');
+    Route::get('/', 'index')->name('settings');
 });
+
+Route::controller(UserController::class)->prefix('user')->middleware('auth')->group(function(){
+    Route::patch('/','update')->name('user.update');
+});
+
 
 Route::controller(CategoryController::class)->prefix('category')->middleware('auth')->group(function(){
     Route::get('/','index')->name('category.index');

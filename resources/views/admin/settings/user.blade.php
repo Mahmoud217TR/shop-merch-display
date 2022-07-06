@@ -5,8 +5,9 @@
 </div>
 <div class="row">
     <div class="col ms-4">
-        <form method="POST" action="#">
+        <form method="POST" action="{{ route('user.update') }}">
             @csrf
+            @method('PATCH')
 
             <div class="row">
                 <div class="col">
