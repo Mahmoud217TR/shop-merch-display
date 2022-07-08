@@ -31,6 +31,16 @@ header nav {
     overflow: auto;
 }
 
+.main-carousel{
+    margin-top: -4rem;
+    .carousel-item img{
+        height: calc(90vh - $header-nav-height);
+        width: 100%;
+        object-position: 50% 50%;
+        object-fit: cover;
+    }
+}
+
 @media screen and (min-width: 768px) {
     aside #dashboard{
         margin-top: $header-nav-height;

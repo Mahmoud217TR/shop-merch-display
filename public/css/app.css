@@ -17639,6 +17639,18 @@ header nav {
   overflow: auto;
 }
 
+.main-carousel {
+  margin-top: -4rem;
+}
+.main-carousel .carousel-item img {
+  height: calc(90vh - 80px);
+  width: 100%;
+  -o-object-position: 50% 50%;
+     object-position: 50% 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 @media screen and (min-width: 768px) {
   aside #dashboard {
     margin-top: 80px;
