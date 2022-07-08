@@ -8,7 +8,12 @@ use Illuminate\Http\Request;
 class WelcomeController extends Controller
 {
     public function index(){
-        $products = Product::with('category')->get();
-        return view('welcome', compact('products'));
+        return view('welcome');
+    }
+
+    public function products(){
+        return response()->json([
+            'products' => $this->formatProducts(Product::with('category')->get()),
+        ]);
     }
 }

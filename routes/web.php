@@ -30,7 +30,10 @@ Auth::routes([
     'verify' => false,
 ]);
 
-Route::get('/', [WelcomeController::class, 'index'])->name('welcome');
+Route::controller(WelcomeController::class)->group(function(){
+    Route::get('/','index')->name('welcome');
+    Route::get('/welcome/products','products')->name('welcome.products');
+});
 
 Route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');
 

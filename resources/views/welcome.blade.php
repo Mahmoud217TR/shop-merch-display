@@ -11,12 +11,10 @@
 <div class="container">
     <div class="row mb-3">
         <div class="col">
-            <h1 class="text-center fw-bold">Our Products</h1>
+            <h1 class="fw-bold">Our Products</h1>
         </div>
     </div>
-    <div class="row">
-        <div class="col"></div>
-    </div>
-    @include('products.index')
+    
+    <products-display-component products-uri="{{ route('welcome.products') }}"></products-display-component>
 </div>
 @endsection
