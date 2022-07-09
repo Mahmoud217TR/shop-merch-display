@@ -15,6 +15,6 @@
         </div>
     </div>
     
-    <products-display-component products-uri="{{ route('welcome.products') }}"></products-display-component>
+    <products-display-component products-uri="{{ route('welcome.products') }}" search-uri="{{ route('welcome.search') }}"></products-display-component>
 </div>
 @endsection
