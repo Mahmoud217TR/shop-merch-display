@@ -9,9 +9,9 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row mt-5">
         <div class="col-lg-3 col-md-4 col-sm-6 mb-3" v-for="product in products">
-            <div class="card">
+            <div class="card slide-bottom">
                 <img src="https://via.placeholder.com/150x100.png" class="card-img-top" alt="product">
                 <div class="card-body">
                     <h5 class="card-title">{{ product.name }}</h5>
@@ -22,6 +22,11 @@
                     </p>
                 </div>
             </div>
+        </div>
+        <div class="col" v-if="products.length < 1">
+            <p class="display-5 text-center slide-bottom" style="padding-top: 10rem; padding-bottom: 10rem;">
+                No Products
+            </p>
         </div>
     </div>
 </template>
