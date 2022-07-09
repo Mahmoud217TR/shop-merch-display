@@ -24084,16 +24084,13 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"row mb-3\"><div class=\"col-md-4 offset-md-8\"><div class=\"d-flex\"><input class=\"form-control\" list=\"datalistOptions\" id=\"search\" placeholder=\"Type to search...\"><datalist id=\"datalistOptions\"></datalist></div></div></div>", 1);
 
 var _hoisted_2 = {
-  "class": "row row-cols"
+  "class": "row"
 };
 var _hoisted_3 = {
-  "class": "col mb-3"
+  "class": "col-lg-3 col-md-4 col-sm-6 mb-3"
 };
 var _hoisted_4 = {
-  "class": "card",
-  style: {
-    "width": "18rem"
-  }
+  "class": "card"
 };
 
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {

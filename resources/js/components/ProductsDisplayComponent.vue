@@ -9,9 +9,9 @@
             </div>
         </div>
     </div>
-    <div class="row row-cols">
-        <div class="col mb-3" v-for="product in products">
-            <div class="card" style="width: 18rem;">
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-3" v-for="product in products">
+            <div class="card">
                 <img src="https://via.placeholder.com/150x100.png" class="card-img-top" alt="product">
                 <div class="card-body">
                     <h5 class="card-title">{{ product.name }}</h5>
