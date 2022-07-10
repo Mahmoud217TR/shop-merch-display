@@ -17646,6 +17646,10 @@ textarea.form-control-lg {
     transform: translateY(0);
   }
 }
+html, body, main {
+  min-height: 100vh;
+}
+
 header {
   position: fixed;
   top: 0;
@@ -17688,4 +17692,7 @@ header nav {
   #board {
     margin-left: 300px;
   }
+}
+footer {
+  bottom: 0px;
 }
