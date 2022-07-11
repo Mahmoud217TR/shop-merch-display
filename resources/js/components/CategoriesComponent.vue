@@ -202,7 +202,6 @@
                 }}).then(response => {
                     this.getCategories();
                     this.discardForm();
-                    console.log(response.data)
                 });
             },
             discardForm(){

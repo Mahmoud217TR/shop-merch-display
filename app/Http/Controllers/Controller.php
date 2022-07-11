@@ -17,6 +17,7 @@ class Controller extends BaseController
                 'id' => $product->id,
                 'name' => $product->name,
                 'price' => $product->price,
+                'image' => $product->image,
                 'category_id' => $product->category->id,
                 'category_name' => $product->category->name,
             ];

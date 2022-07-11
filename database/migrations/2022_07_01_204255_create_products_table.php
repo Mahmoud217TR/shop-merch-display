@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->unsignedDecimal('price');
             $table->foreignIdFor(Category::class)->constrained()->onDelete('cascade');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

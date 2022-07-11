@@ -250,7 +250,6 @@
                 }}).then(response => {
                     this.getProducts();
                     this.discardForm();
-                    console.log(response.data)
                 });
             },
             discardForm(){

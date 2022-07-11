@@ -22992,8 +22992,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         _this4.getCategories();
 
         _this4.discardForm();
-
-        console.log(response.data);
       });
     },
     discardForm: function discardForm() {
@@ -23266,8 +23264,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         _this4.getProducts();
 
         _this4.discardForm();
-
-        console.log(response.data);
       });
     },
     discardForm: function discardForm() {
@@ -24116,15 +24112,7 @@ var _hoisted_6 = {
 var _hoisted_7 = {
   "class": "card slide-bottom"
 };
-
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: "https://via.placeholder.com/150x100.png",
-  "class": "card-img-top",
-  alt: "product"
-}, null, -1
-/* HOISTED */
-);
-
+var _hoisted_8 = ["src"];
 var _hoisted_9 = {
   "class": "card-body"
 };
@@ -24174,7 +24162,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 544
   /* HYDRATE_EVENTS, NEED_PATCH */
   ), _hoisted_4])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.products, function (product) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(product.name), 1
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+      src: product.image,
+      "class": "card-img-top bg-secondary",
+      alt: "product"
+    }, null, 8
+    /* PROPS */
+    , _hoisted_8), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(product.name), 1
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_12, "Category: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(product.category_name), 1
     /* TEXT */
