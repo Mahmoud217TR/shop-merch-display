@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CategorySearchController;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductSearchController;
 use App\Http\Controllers\SettingsController;
@@ -75,3 +76,4 @@ Route::controller(ProductSearchController::class)->prefix('search/product')->mid
 });
 
 Route::get('/export', [ExportController::class, 'export'])->name('product.export');
+Route::post('/{product}/image', [ImageUploadController::class, 'store'])->name('product.image.store');
