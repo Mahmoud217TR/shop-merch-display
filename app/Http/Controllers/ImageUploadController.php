@@ -31,7 +31,7 @@ class ImageUploadController extends Controller
     }
 
     private function saveImageToProduct($image, $product){
-        $path = 'storage/'.$image->storeAs('uploads',$product->name.'.'.$image->clientExtension(),'public');
+        $path = 'storage/'.$image->storeAs('uploads',$product->id.'.'.$image->clientExtension(),'public');
         $this->fitImage(Image::make($path), 600, 400);
         $product->image = asset($path);
         $product->save();

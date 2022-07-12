@@ -7,6 +7,8 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
@@ -61,7 +63,9 @@ class ProductController extends Controller
         $idValidator = $this->getIdValidator();
 
         if($idValidator->passes()){
-            Product::find($idValidator->validated()['id'])->delete();
+            $product = Product::find($idValidator->validated()['id']);
+            $product->removeImage();
+            $product->delete();
             return response()->json([
                 'code' => 200,
                 'id' => $idValidator->validated()['id'],
