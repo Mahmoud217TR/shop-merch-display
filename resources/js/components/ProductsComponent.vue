@@ -115,7 +115,7 @@
                         </tr>
                         <tr v-for="product in products">
                             <td>{{ product.id }}</td>
-                            <td class="d-flex justify-content-center"><img :src="product.image" width="200" height="100" alt="product"></td>
+                            <td class="d-flex justify-content-center"><img class="rounded" :src="product.image" width="200" height="100" alt="product"></td>
                             <td>{{ product.category_name }}</td>
                             <td>{{ product.name }}</td>
                             <td>{{ product.price }}</td>

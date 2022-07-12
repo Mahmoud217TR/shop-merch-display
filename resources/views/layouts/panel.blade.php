@@ -48,7 +48,7 @@
             </div>
         </div>
     </aside>
-    <div id="board" class="pt-3">
+    <div id="board" class="pt-3 slide-right">
         @yield('board')
     </div>
 @endsection
