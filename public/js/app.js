@@ -24229,7 +24229,7 @@ var _hoisted_5 = {
   "class": "row mt-5"
 };
 var _hoisted_6 = {
-  "class": "col-lg-3 col-md-4 col-sm-6 mb-3"
+  "class": "col-lg-3 col-md-4 col-sm-6 mb-3 p-5 p-sm-2"
 };
 var _hoisted_7 = {
   "class": "card slide-bottom"
@@ -24288,7 +24288,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       src: product.image,
       "class": "card-img-top bg-secondary",
       width: "200",
-      height: "100",
+      height: "150",
       alt: "product"
     }, null, 8
     /* PROPS */

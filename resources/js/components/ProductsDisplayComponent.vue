@@ -10,9 +10,9 @@
         </div>
     </div>
     <div class="row mt-5">
-        <div class="col-lg-3 col-md-4 col-sm-6 mb-3" v-for="product in products">
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-3 p-5 p-sm-2" v-for="product in products">
             <div class="card slide-bottom">
-                <img :src="product.image" class="card-img-top bg-secondary" width="200" height="100" alt="product">
+                <img :src="product.image" class="card-img-top bg-secondary" width="200" height="150" alt="product">
                 <div class="card-body">
                     <h5 class="card-title">{{ product.name }}</h5>
                     <p class="card-text">
