@@ -107,15 +107,15 @@
                     <tbody>
                         <tr>
                             <th class="col-1" scope="col">ID</th>
-                            <th class="col-3" scope="col">Image</th>
-                            <th class="col-2" scope="col">Category</th>
+                            <th class="col-2" scope="col">Image</th>
+                            <th class="col-3" scope="col">Category</th>
                             <th class="col-3" scope="col-md-6">Name</th>
                             <th class="col-2" scope="col">Price</th>
                             <th class="col-1" scope="col">Options</th>
                         </tr>
                         <tr v-for="product in products">
                             <td>{{ product.id }}</td>
-                            <td><img :src="product.image" alt="product"></td>
+                            <td class="d-flex justify-content-center"><img :src="product.image" width="200" height="100" alt="product"></td>
                             <td>{{ product.category_name }}</td>
                             <td>{{ product.name }}</td>
                             <td>{{ product.price }}</td>

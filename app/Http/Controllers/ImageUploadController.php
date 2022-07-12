@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Image;
 
 class ImageUploadController extends Controller
 {
@@ -31,8 +32,13 @@ class ImageUploadController extends Controller
 
     private function saveImageToProduct($image, $product){
         $path = 'storage/'.$image->storeAs('uploads',$product->name.'.'.$image->clientExtension(),'public');
+        $this->fitImage(Image::make($path), 600, 300);
         $product->image = asset($path);
         $product->save();
         return $path;
+    }
+
+    private function fitImage($image, $width, $height){
+        $image->fit($width, $height)->save();
     }
 }
