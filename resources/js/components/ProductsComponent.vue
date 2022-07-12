@@ -57,6 +57,12 @@
                                 </span>
                             </div>
                         </div>
+
+                        <div class="row mt-3">
+                            <div class="col">
+                                <image-uploader-component v-if="modal.state=='update'" :url="imageUri+'/'+input.id" :csrf="csrf"></image-uploader-component>
+                            </div>
+                        </div>
                     </div>
                 
                 </div>
@@ -101,13 +107,15 @@
                     <tbody>
                         <tr>
                             <th class="col-1" scope="col">ID</th>
-                            <th class="col-3" scope="col">Category</th>
-                            <th class="col-4" scope="col-md-6">Name</th>
-                            <th class="col-3" scope="col">Price</th>
+                            <th class="col-3" scope="col">Image</th>
+                            <th class="col-2" scope="col">Category</th>
+                            <th class="col-3" scope="col-md-6">Name</th>
+                            <th class="col-2" scope="col">Price</th>
                             <th class="col-1" scope="col">Options</th>
                         </tr>
                         <tr v-for="product in products">
                             <td>{{ product.id }}</td>
+                            <td><img :src="product.image" alt="product"></td>
                             <td>{{ product.category_name }}</td>
                             <td>{{ product.name }}</td>
                             <td>{{ product.price }}</td>
@@ -129,7 +137,7 @@
 
 <script>
     export default {
-        props:['indexUri','storeUri','updateUri','destroyUri','searchUri','excelUri'],
+        props:['indexUri','storeUri','updateUri','destroyUri','searchUri','excelUri','imageUri','csrf'],
         data() {
             return {
                 products: [],
@@ -253,6 +261,7 @@
                 });
             },
             discardForm(){
+                this.modal.state = 'none';
                 this.$refs['modal-form'].reset();
                 this.$refs['modal-close-button'].click();
             },

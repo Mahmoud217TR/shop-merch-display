@@ -20,7 +20,8 @@
         <div class="col">
             <products-component index-uri="{{ route('product.index') }}" store-uri="{{ route('product.store') }}"
             update-uri="{{ route('product.update') }}" destroy-uri="{{ route('product.destroy') }}"
-            search-uri="{{ route('product.search') }}" excel-uri="{{ route('product.export') }}"></products-component>
+            search-uri="{{ route('product.search') }}" excel-uri="{{ route('product.export') }}"
+            image-uri="{{ route('product.image.store','') }}" csrf="{{ csrf_token() }}"></products-component>
         </div>
     </div>
 </div>

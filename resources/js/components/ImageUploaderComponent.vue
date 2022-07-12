@@ -36,11 +36,15 @@ export default {
             setOptions({
                 server: {
                     process: this.url,
+                    fetch: null,
+                    revert: null,
                     headers:{
                         'X-CSRF-TOKEN': this.csrf,
                     }
                 },
                 instantUpload: true,
+                imageResizeTargetWidth: 200,
+                imageResizeTargetHeight: 200,
             });
         },
     },

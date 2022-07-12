@@ -76,4 +76,4 @@ Route::controller(ProductSearchController::class)->prefix('search/product')->mid
 });
 
 Route::get('/export', [ExportController::class, 'export'])->name('product.export');
-Route::post('/{product}/image', [ImageUploadController::class, 'store'])->name('product.image.store');
+Route::post('/image/{product}', [ImageUploadController::class, 'store'])->middleware('auth')->name('product.image.store');
