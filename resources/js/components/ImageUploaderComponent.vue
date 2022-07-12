@@ -2,10 +2,9 @@
     <file-pond
       name="image"
       ref="pond"
-      label-idle="Drop files here..."
+      label-idle="Drop Or Browse"
       v-bind:allow-multiple="false"
       accepted-file-types="image/jpeg, image/png"
-      :server="url"
       v-bind:files="myFiles"
       v-on:init="handleFilePondInit"
     />
@@ -33,17 +32,20 @@ export default {
     },
     methods: {
         handleFilePondInit() {
-            console.log("FilePond has initialized");
-
             // FilePond instance methods are available on `this.$refs.pond`
+            setOptions({
+                server: {
+                    process: this.url,
+                    headers:{
+                        'X-CSRF-TOKEN': this.csrf,
+                    }
+                },
+                instantUpload: true,
+            });
         },
     },
     mounted() {
-        setOptions({
-            server: {
-                'X-CSRF-TOKEN': this.csrf
-            }
-        });
+        
     },
     components: {
         FilePond,

@@ -23071,16 +23071,19 @@ var FilePond = vue_filepond__WEBPACK_IMPORTED_MODULE_0___default()((filepond_plu
   },
   methods: {
     handleFilePondInit: function handleFilePondInit() {
-      console.log("FilePond has initialized"); // FilePond instance methods are available on `this.$refs.pond`
+      // FilePond instance methods are available on `this.$refs.pond`
+      (0,vue_filepond__WEBPACK_IMPORTED_MODULE_0__.setOptions)({
+        server: {
+          process: this.url,
+          headers: {
+            'X-CSRF-TOKEN': this.csrf
+          }
+        },
+        instantUpload: true
+      });
     }
   },
-  mounted: function mounted() {
-    (0,vue_filepond__WEBPACK_IMPORTED_MODULE_0__.setOptions)({
-      server: {
-        'X-CSRF-TOKEN': this.csrf
-      }
-    });
-  },
+  mounted: function mounted() {},
   components: {
     FilePond: FilePond
   }
@@ -23729,15 +23732,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_file_pond, {
     name: "image",
     ref: "pond",
-    "label-idle": "Drop files here...",
+    "label-idle": "Drop Or Browse",
     "allow-multiple": false,
     "accepted-file-types": "image/jpeg, image/png",
-    server: $props.url,
     files: $data.myFiles,
     onInit: $options.handleFilePondInit
   }, null, 8
   /* PROPS */
-  , ["server", "files", "onInit"]);
+  , ["files", "onInit"]);
 }
 
 /***/ }),
