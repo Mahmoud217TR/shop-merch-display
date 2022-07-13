@@ -64,3 +64,52 @@ header nav {
 footer{
     bottom: 0px;
 }
+
+.contact-container{
+    width: 10rem;
+    height: 10rem;
+    margin: 3rem;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    .contact-name{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+    .contacts{
+        position: relative;
+        width: 10rem;
+        height: 10rem;
+        .contact{
+            z-index: -1;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            transition: 1s;
+        }
+    }
+    &:hover{
+        .contacts{
+            .contact{
+                top: -1rem;
+                &:nth-child(n){
+                    rotate: (30);
+                }
+            }
+        }
+    }
+}
+
+.dark-contact-container{
+    background-color: rgb(33, 37, 41);
+    color: rgb(248, 249, 250);
+    &:hover{
+        box-shadow: 0px 0px 5px 5px rgba(33, 37, 41, .5);
+    }
+    .contacts{
+        color: rgba(33, 37, 41);
+    }
+}
