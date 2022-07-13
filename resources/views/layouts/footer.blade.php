@@ -12,7 +12,7 @@
                     <a class="nav-link text-secondary" href="{{ route('about') }}">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-secondary" href="#">Contacts</a>
+                    <a class="nav-link text-secondary" href="{{ route('contacts') }}">Contacts</a>
                 </li>
             </ul>
             <ul class="nav justify-content-center  fs-1 flex-column flex-sm-row text-center">
