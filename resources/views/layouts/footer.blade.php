@@ -6,10 +6,10 @@
             </p>
             <ul class="nav justify-content-center flex-column flex-sm-row text-center">
                 <li class="nav-item">
-                    <a class="nav-link text-secondary" href="/">Home</a target="_blank">
+                    <a class="nav-link text-secondary" href="{{ route('welcome') }}">Home</a target="_blank">
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-secondary" href="#">About</a>
+                    <a class="nav-link text-secondary" href="{{ route('about') }}">About</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-secondary" href="#">Contacts</a>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Exports\ProductsExport;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CategorySearchController;
@@ -37,6 +38,8 @@ Route::controller(WelcomeController::class)->group(function(){
     Route::get('/welcome/search','search')->name('welcome.search');
 });
 
+Route::get('/about', [AboutController::class, 'index'])->name('about');
+
 Route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');
 
 Route::controller(AdminController::class)->prefix('admin')->middleware('auth')->group(function(){
@@ -51,7 +54,6 @@ Route::controller(SettingsController::class)->prefix('settings')->middleware('au
 Route::controller(UserController::class)->prefix('user')->middleware('auth')->group(function(){
     Route::patch('/','update')->name('user.update');
 });
-
 
 Route::controller(CategoryController::class)->prefix('category')->middleware('auth')->group(function(){
     Route::get('/','index')->name('category.index');
