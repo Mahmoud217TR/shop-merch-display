@@ -12,4 +12,5 @@ app.component('categories-component', require('./components/CategoriesComponent.
 app.component('bar-chart-component', require('./components/BarChartComponent.vue').default);
 app.component('pie-chart-component', require('./components/PieChartComponent.vue').default);
 app.component('products-display-component', require('./components/ProductsDisplayComponent.vue').default);
+app.component('contact-component', require('./components/ContactComponent.vue').default);
 app.mount("#app");
