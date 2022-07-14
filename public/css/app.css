@@ -17727,7 +17727,7 @@ footer {
 .contact-container {
   width: 10rem;
   height: 10rem;
-  margin: 3rem;
+  margin: 10rem;
   border-radius: 50%;
   cursor: pointer;
   position: relative;
@@ -17744,18 +17744,42 @@ footer {
   height: 10rem;
 }
 .contact-container .contacts .contact {
+  width: 7rem;
+  height: 7rem;
   z-index: -1;
+  border-radius: 50%;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   transition: 1s;
 }
-.contact-container:hover .contacts .contact {
-  top: -1rem;
+.contact-container .contacts .contact .contact-info {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
-.contact-container:hover .contacts .contact:nth-child(n) {
-  rotate: 30;
+
+.active-container .contacts .contact:nth-child(1) {
+  top: -4rem;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 0;
+}
+.active-container .contacts .contact:nth-child(2) {
+  left: -4rem;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 0;
+}
+.active-container .contacts .contact:nth-child(3) {
+  left: 7rem;
+  transform: translateX(50%) translateY(-50%);
+  z-index: 0;
+}
+.active-container .contacts .contact:nth-child(4) {
+  top: 14rem;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 0;
 }
 
 .dark-contact-container {
@@ -17765,6 +17789,9 @@ footer {
 .dark-contact-container:hover {
   box-shadow: 0px 0px 5px 5px rgba(33, 37, 41, 0.5);
 }
-.dark-contact-container .contacts {
-  color: rgb(33, 37, 41);
+.dark-contact-container .contacts .contact {
+  background-color: rgb(33, 37, 41);
+}
+.dark-contact-container .contacts .contact:hover {
+  color: #ffc107;
 }

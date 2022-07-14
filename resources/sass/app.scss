@@ -68,7 +68,7 @@ footer{
 .contact-container{
     width: 10rem;
     height: 10rem;
-    margin: 3rem;
+    margin: 10rem;
     border-radius: 50%;
     cursor: pointer;
     position: relative;
@@ -83,21 +83,47 @@ footer{
         width: 10rem;
         height: 10rem;
         .contact{
+            width: 7rem;
+            height: 7rem;
             z-index: -1;
+            border-radius: 50%;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translateX(-50%) translateY(-50%);
             transition: 1s;
+            .contact-info{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+            }
         }
     }
-    &:hover{
-        .contacts{
-            .contact{
-                top: -1rem;
-                &:nth-child(n){
-                    rotate: (30);
-                }
+}
+
+.active-container{
+    .contacts{
+        .contact{
+            &:nth-child(1){
+                top: -4rem;
+                transform: translateX(-50%) translateY(-50%);
+                z-index: 0;
+            }
+            &:nth-child(2){
+                left: -4rem;
+                transform: translateX(-50%) translateY(-50%);
+                z-index: 0;
+            }
+            &:nth-child(3){
+                left: 7rem;
+                transform: translateX(50%) translateY(-50%);
+                z-index: 0;
+            }
+            &:nth-child(4){
+                top: 14rem;
+                transform: translateX(-50%) translateY(-50%);
+                z-index: 0;
             }
         }
     }
@@ -110,6 +136,11 @@ footer{
         box-shadow: 0px 0px 5px 5px rgba(33, 37, 41, .5);
     }
     .contacts{
-        color: rgba(33, 37, 41);
+        .contact{
+            background-color: rgb(33, 37, 41);
+            &:hover{
+                color: #ffc107;
+            }
+        }
     }
 }

@@ -5,8 +5,8 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col">
-                <div class="contact-container dark-contact-container">
+            <div class="col d-flex justify-content-center">
+                <div class="contact-container dark-contact-container active-container">
                     <div class="contact-name">
                         <h2>Marlo</h2>
                     </div>
@@ -16,6 +16,12 @@
                         </div>
                         <div class="contact">
                             <p class="contact-info">@Someone</p>
+                        </div>
+                        <div class="contact">
+                            <p class="contact-info">@other</p>
+                        </div>
+                        <div class="contact">
+                            <p class="contact-info">@Test</p>
                         </div>
                     </div>
                 </div>
