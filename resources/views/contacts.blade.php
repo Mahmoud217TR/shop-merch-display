@@ -5,6 +5,11 @@
 @section('content')
     <div class="container">
         <div class="row">
+            <div class="col">
+                <h1 class="fw-bold text-center">Contacts</h1>
+            </div>
+        </div>
+        <div class="row slide-bottom">
             <div class="col d-flex justify-content-center">
                 <contact-component name='Contact Name' 
                     contact1='0912345678' contact2='@telegram'
