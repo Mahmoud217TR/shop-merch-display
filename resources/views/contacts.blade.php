@@ -6,15 +6,11 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1 class="fw-bold text-center">Contacts</h1>
+                <h1 class="fw-bold">Contacts</h1>
             </div>
         </div>
         <div class="row slide-bottom">
-            <div class="col d-flex justify-content-center">
-                <contact-component name='Contact Name' 
-                    contact1='0912345678' contact2='@telegram'
-                    contact3='@facbook' contact4='@twitter'>
-                </contact-component>
+            <div class="col-md-6 d-flex justify-content-center">
                 <contact-component name='Contact Name' 
                     contact1='0912345678' contact2='@telegram'
                     contact3='@facbook' contact4='@twitter'>
