@@ -16,6 +16,9 @@
                     contact3='@facbook' contact4='@twitter'>
                 </contact-component>
             </div>
+            <div class="col">
+                
+            </div>
         </div>
     </div>
 @endsection
