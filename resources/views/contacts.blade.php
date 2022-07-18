@@ -17,7 +17,7 @@
                 </contact-component>
             </div>
             <div class="col">
-                
+                <img src="{{ asset('images/support.png') }}" alt="image">
             </div>
         </div>
     </div>
