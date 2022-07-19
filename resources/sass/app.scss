@@ -48,18 +48,6 @@ header nav {
     }
 }
 
-@media screen and (min-width: 768px) {
-    aside #dashboard{
-        margin-top: $header-nav-height;
-        width: $aside-width;
-        visibility: visible!important;
-        transform: none!important;
-    }
-
-    #board{
-        margin-left: $aside-width;
-    }
-}
 
 footer{
     bottom: 0px;
@@ -142,5 +130,26 @@ footer{
                 color: #ffc107;
             }
         }
+    }
+}
+
+.contacts-container{
+    background-image: url('../../public/images/background.webp');
+    background-size: cover;
+    height: calc(100vh + 8rem);
+    margin-top: -4rem;
+    margin-bottom: -4rem;
+}
+
+@media screen and (min-width: 768px) {
+    aside #dashboard{
+        margin-top: $header-nav-height;
+        width: $aside-width;
+        visibility: visible!important;
+        transform: none!important;
+    }
+
+    #board{
+        margin-left: $aside-width;
     }
 }

@@ -3,9 +3,9 @@
 @section('title','Contacts')
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid contacts-container">
         <div class="row">
-            <div class="col">
+            <div class="col-md-6">
                 <h1 class="fw-bold">Contacts</h1>
             </div>
         </div>
@@ -15,9 +15,6 @@
                     contact1='0912345678' contact2='@telegram'
                     contact3='@facbook' contact4='@twitter'>
                 </contact-component>
-            </div>
-            <div class="col">
-                <img src="{{ asset('images/support.png') }}" alt="image">
             </div>
         </div>
     </div>

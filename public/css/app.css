@@ -17709,17 +17709,6 @@ header nav {
      object-fit: cover;
 }
 
-@media screen and (min-width: 768px) {
-  aside #dashboard {
-    margin-top: 80px;
-    width: 300px;
-    visibility: visible !important;
-    transform: none !important;
-  }
-  #board {
-    margin-left: 300px;
-  }
-}
 footer {
   bottom: 0px;
 }
@@ -17794,4 +17783,24 @@ footer {
 }
 .dark-contact-container .contacts .contact:hover {
   color: #ffc107;
+}
+
+.contacts-container {
+  background-image: url(/images/background.webp?9a9c708ab121e7618192d2cb933fbc92);
+  background-size: cover;
+  height: calc(100vh + 8rem);
+  margin-top: -4rem;
+  margin-bottom: -4rem;
+}
+
+@media screen and (min-width: 768px) {
+  aside #dashboard {
+    margin-top: 80px;
+    width: 300px;
+    visibility: visible !important;
+    transform: none !important;
+  }
+  #board {
+    margin-left: 300px;
+  }
 }
